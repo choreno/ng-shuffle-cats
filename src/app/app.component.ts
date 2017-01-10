@@ -6,6 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  
+  isCardReset: boolean = false; 
+
+  isVisible: boolean = false; 
+  isClassVisible: false;
+
+  reset():void{
+
+    this.isCardReset = !this.isCardReset;  
+    //alert('reset!');
+
+  };
+  hhh():void{
+
+    this.isVisible = this.isVisible
+    console.log(this.isVisible);
+  };
 
   cards: any[] = [
     { number: 'ace', type: 'spades' },
