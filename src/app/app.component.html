@@ -1,110 +1,16 @@
 <md-toolbar color="primary">
     Hacking the Shuffle Cats with Angular2
 </md-toolbar>
-
 <br>
-
-<img src="../assets/png-cards-1.3/10_of_clubs.png" alt="Mountain View" style="width:304px;height:228px;">
-
-<md-grid-list cols="13" rowHeight="100px">
-  <md-grid-tile *ngFor="let card of cards">
-    {{card.text}}
-  </md-grid-tile>
+<md-grid-list cols="13" rowHeight="170px">
+    <md-grid-tile *ngFor="let card of cards">
+        <md-card>
+            <img src="../assets/png-cards-1.3/{{card.number}}_of_{{card.type}}.png" style="width:70px;height:100px;">
+        </md-card>
+    </md-grid-tile>
 </md-grid-list>
 
 <br>
-<br>
-<br>
-<br>
-<div class="flex-container" fxLayoutAlign="center center" >
+<div class="flex-container" fxLayoutAlign="center center">
     <button md-raised-button color="primary">Reset !</button>
 </div>
-
-
-<!--Examples ------------------------------------------>
-
-
-<md-grid-list cols="4" rowHeight="100px">
-  <md-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
-  [style.background]="tile.color">
-    {{tile.text}}
-  </md-grid-tile>
-</md-grid-list>
-
-
-<md-grid-list cols="13" [style.background]="lightblue">
-  <md-grid-tile >Button</md-grid-tile>
-  <md-grid-tile>2</md-grid-tile>
-  <md-grid-tile>3</md-grid-tile>
-  <md-grid-tile>4</md-grid-tile>
-</md-grid-list>
-
-
-
-
-
-<div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutAlign.xs="start">
-    <div style="border: 1px solid black" class="flex-item" fxFlex="20%" fxFlex.xs="40%">f1 </div>
-    <div style="border: 1px solid black" class="flex-item" fxFlex> f2</div>
-    <div style="border: 1px solid black" class="flex-item" fxFlex="25px">f3 </div>
-</div>
-
-<!--<md-grid-list cols="4" rowHeight="100px" >
-      <md-grid-tile *ngFor="let planet of planetsList" >
-          <h3 md-line>{{planet.name}}</h3>
-          <button md-icon-button (click)="showPlanetInfo(planet)">
-            <md-icon>info</md-icon>
-          </button>         
-        
-      </md-grid-tile>
-</md-grid-list>-->
-
-<!--
-<br>
-<p>You selected <b>{{selectedPlanet.name}}</b> planet</p>
- <i>{{selectedPlanet.description}}</i>
--->
-
-<div layout="row">
-    <div flex>First item in row</div>
-    <div flex>Second item in row</div>
-</div>
-<div layout="column">
-    <div flex>First item in column</div>
-    <div flex>Second item in column</div>
-</div>
-
-
-
-<md-card>
-    <button md-button>FLAT</button>
-    <button md-raised-button md-tooltip="This is a tooltip!">RAISED</button>
-
-    <button md-raised-button color="accent">ACCENT RAISED</button>
-</md-card>
-
-
-
-
-<md-grid-list cols="12" [style.background]="lightblue">
-  <md-grid-tile>1</md-grid-tile>
-  <md-grid-tile>2</md-grid-tile>
-  <md-grid-tile>3</md-grid-tile>
-  <md-grid-tile>4</md-grid-tile>
-</md-grid-list>
-
-<md-grid-list cols="4" [style.background]="'lightblue'">
-   <md-grid-tile>One</md-grid-tile>
-   <md-grid-tile>Two</md-grid-tile>
-   <md-grid-tile>Three</md-grid-tile>
-   <md-grid-tile>Four</md-grid-tile>
-</md-grid-list>
-
-
-<md-card class="md-display-4">
-    <md-card-title-group>
-        <md-icon class="md-24">favorite</md-icon>
-        <md-card-title>Card with title</md-card-title>
-        <md-card-subtitle>Subtitle</md-card-subtitle>
-    </md-card-title-group>
-</md-card>
