@@ -7,12 +7,20 @@ img {
     // }
 }
 
+md-card{
 
-.cardReset {
-    // visibility: hidden; 
-    background-color: yellow;
+    &:hover{
+        bottom: 0.2em; //move up the hovered card
+        background-color: yellow;
+    }
 }
 
-.my-class {
-    background-color: red;
-  }
+.selectedCard {
+    background-color: yellow;
+
+}
+
+.toggleCard {
+    //display: none; 
+    visibility:hidden;
+}

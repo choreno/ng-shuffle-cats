@@ -11,7 +11,17 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 //routing
 import { AppRoutingModule } from './router/app.routing.module';
 
+//rxjs
+import './rxjs/rxjs.extensions';
 
+//webApi
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { CardsDb } from './db/cards.db';
+
+//service
+import { CardService } from './services/card.service';
+
+//components
 import { AppComponent } from './app.component';
 
 
@@ -27,8 +37,10 @@ import { AppComponent } from './app.component';
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
     AppRoutingModule,
+    InMemoryWebApiModule.forRoot(CardsDb, { delay: 0 })
+
   ],
-  providers: [],
+  providers: [CardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
