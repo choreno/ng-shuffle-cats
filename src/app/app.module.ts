@@ -29,6 +29,7 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [
     AppComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -37,10 +38,11 @@ import { AppComponent } from './app.component';
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
     AppRoutingModule,
-    InMemoryWebApiModule.forRoot(CardsDb, { delay: 0 })
+    InMemoryWebApiModule.forRoot(CardsDb, { delay: 0 }),
+    
 
   ],
-  providers: [CardService],
+  providers: [CardService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

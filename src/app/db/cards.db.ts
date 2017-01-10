@@ -1,5 +1,6 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { ICard } from '../interfaces/card.interface';
+import { CardStatus } from '../enums/card.status';
 
 export class CardsDb implements InMemoryDbService {
 
@@ -16,7 +17,7 @@ export class CardsDb implements InMemoryDbService {
                     id: id,
                     type: type,
                     isDisplay: true,
-                    status: 'decked'   //decked, discarded,opponent
+                    status: CardStatus.Decked 
                 }
                 cards.push(card); 
             }
