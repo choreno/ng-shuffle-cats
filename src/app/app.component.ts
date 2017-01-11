@@ -6,7 +6,6 @@ import { CardStatus } from './enums/card.status';
 
 import { Observable } from 'rxjs/Observable';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,7 +19,7 @@ export class AppComponent {
   isVisible: boolean = true;
 
   numberOfCards: number;
-  initialProbability: number ; //users will have the 7 cards each for starting game
+  initialProbability: number; //users will have the 7 cards each for starting game
   probability: number;
 
   constructor(private _cardService: CardService) { }
@@ -28,12 +27,28 @@ export class AppComponent {
 
   toggleCardDisplay(index: number) {
 
-    //For discarded cards
-    if (this.cards[index].status === CardStatus.Decked) {
-      this.cards[index].isDisplay = !this.cards[index].isDisplay;
-      this.cards[index].status = CardStatus.Discarded;
 
-      this.probability = this.updateProbability(this.numberOfCards--);
+    switch (this.cards[index].status) {
+      case CardStatus.Decked:
+        this.cards[index].isDisplay = !this.cards[index].isDisplay;
+        this.cards[index].status = CardStatus.Discarded;
+        this.numberOfCards--;
+        this.probability = this.updateProbability(this.numberOfCards);
+        break;
+
+      case CardStatus.Discarded:
+        this.cards[index].isDisplay = !this.cards[index].isDisplay;
+        this.cards[index].status = CardStatus.Opponent;
+        this.cards[index].isOpponentCard = true;
+        this.numberOfCards++;
+        this.probability = this.updateProbability(this.numberOfCards);
+        break;
+
+      case CardStatus.Opponent:
+
+        this.cards[index].status = CardStatus.Decked;
+        this.cards[index].isOpponentCard = false;
+        break;
 
     }
 
@@ -45,7 +60,7 @@ export class AppComponent {
       card.isDisplay = true;
     }
 
-    this.probability = this.initialProbability; 
+    this.probability = this.initialProbability;
 
   };
 
@@ -57,11 +72,10 @@ export class AppComponent {
   };
 
   updateProbability(currentNumberOfCards): number {
-    
-    var numberOfUserCards = 14; //two users will have the 7 cards each for starting game
-    var probability = 100 / (currentNumberOfCards - numberOfUserCards);
 
-    if (currentNumberOfCards == numberOfUserCards || currentNumberOfCards < numberOfUserCards) {
+    var probability = 100 / currentNumberOfCards;
+
+    if (currentNumberOfCards <= 0) {
       probability = 100;
     }
 
@@ -73,9 +87,9 @@ export class AppComponent {
     this._cardService.getAllCards().subscribe(cards => this.cards = cards,
       err => console.log(err),
       () => {
-        this.numberOfCards = this.cards.length;
-        this.probability = this.updateProbability(this.numberOfCards) ;
-        this.initialProbability = this.probability;         
+        this.numberOfCards = (this.cards.length - 7);
+        this.probability = this.updateProbability(this.numberOfCards);
+        this.initialProbability = this.probability;
       });
 
   }

@@ -11,7 +11,7 @@ md-card{
 
     &:hover{
         bottom: 0.2em; //move up the hovered card
-        background-color: yellow;
+        //background-color: yellow;
     }
 }
 
@@ -23,4 +23,8 @@ md-card{
 .toggleCard {
     //display: none; 
     visibility:hidden;
+}
+
+.opponentCard{
+    background-color: yellow;
 }
