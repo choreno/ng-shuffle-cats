@@ -19,6 +19,7 @@ export class AppComponent {
   isVisible: boolean = true;
 
   numberOfCards: number;
+  initialNumberOfCards: number; 
   initialProbability: number; //users will have the 7 cards each for starting game
   probability: number;
 
@@ -58,8 +59,11 @@ export class AppComponent {
 
     for (var card of this.cards) {
       card.isDisplay = true;
+      card.status = CardStatus.Decked;
+      card.isOpponentCard = false; 
     }
 
+    this.numberOfCards = this.initialNumberOfCards ;
     this.probability = this.initialProbability;
 
   };
@@ -87,7 +91,8 @@ export class AppComponent {
     this._cardService.getAllCards().subscribe(cards => this.cards = cards,
       err => console.log(err),
       () => {
-        this.numberOfCards = (this.cards.length - 7);
+        this.initialNumberOfCards = (this.cards.length - 7)
+        this.numberOfCards = this.initialNumberOfCards;
         this.probability = this.updateProbability(this.numberOfCards);
         this.initialProbability = this.probability;
       });
