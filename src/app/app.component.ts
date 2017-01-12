@@ -20,7 +20,7 @@ export class AppComponent {
 
   numberOfCards: number;
   initialNumberOfCards: number; 
-  initialProbability: number; //users will have the 7 cards each for starting game
+  initialProbability: number;
   probability: number;
 
   constructor(private _cardService: CardService) { }
@@ -91,7 +91,7 @@ export class AppComponent {
     this._cardService.getAllCards().subscribe(cards => this.cards = cards,
       err => console.log(err),
       () => {
-        this.initialNumberOfCards = (this.cards.length - 7)
+        this.initialNumberOfCards = (this.cards.length - 7)  //users will have the 7 cards each for starting game
         this.numberOfCards = this.initialNumberOfCards;
         this.probability = this.updateProbability(this.numberOfCards);
         this.initialProbability = this.probability;
